@@ -1,0 +1,9 @@
+#!/bin/bash
+### CLIver (setup) ###
+
+# Get the root path of the program
+DIR=$( dirname $( readlink -f $0 ) );
+
+# Add Link to $HOME/.local/bin, so it will be accessible by cl<tab><tab>
+ln -s $DIR/cliver $HOME/.local/bin/cliver
+echo 'Cliver est désormais accessible comme commande système'

@@ -1,0 +1,8 @@
+#!/bin/bash
+### CLIver (launcher) ###
+
+# Get the root path of the program
+DIR=$( dirname $( readlink -f $0 ) );
+
+# Execute php/cliver
+php-cgi -q $DIR/cliver.php $@

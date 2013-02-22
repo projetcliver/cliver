@@ -1,4 +1,9 @@
-<?php session_start();
+<?php 
+	error_reporting(0); // hide PHP lib warnings
+	ini_set('display_errors', 0);
+
+	$_COOKIE['PHPSESSID'] = "a1b2c3d4";
+	session_start();
 
 
         /* *********************************************
@@ -7,9 +12,9 @@
          * 
          * ********************************************* */
         $config = array(
-            "user_token" => '961054309-nqoEFc6mYQHvhmHkmOHEmVnpgTGn7sQdJlmCs5RY', // VOTRE_USER_TOKEN
-            "user_secret" => 'Qkfi4Fbro9lWHiLKpzVFik30UemsIR7e8iiUtgMrHk',        // VOTRE_USER_SECRET
-            "screen_name" => 'QLEXX85'                                            // VOTRE_SCREEN_NAME
+            "user_token" => '94638788-FXenjdbnXyxTt1mwUdp0KQDuTatfSElbIeXMFifnM', // VOTRE_USER_TOKEN
+            "user_secret" => '580SMaUExeXyi69bM7p2aAmYyaQcjjDaVtrIEKL1sFk',        // VOTRE_USER_SECRET
+            "screen_name" => 'KrisJNT'                                            // VOTRE_SCREEN_NAME
         );
         
         
@@ -52,6 +57,7 @@
                 */
                 if($argvParser->isExistOption('send')){
                     $msg = $argvParser->getOption('send');
+		    var_dump($msg);die;
                     $code = $tmhOAuth->request('POST', $tmhOAuth->url('1/statuses/update'), array(
                         'status' => $msg
                     ));
@@ -112,11 +118,11 @@
     Pour le obtenir, pour le moment il faut s\'identifier via l\'url : http://alexandre-godet.com/dev/CLIver/auth.php
     Aide :
     Pour le moment la version client permet de :
-        - Mettre à jour votre status (envoyer un tweet) : $ php cliver.php --send="Votre message ici"
-        - Afficher la version du projet CLIver : $ php cliver.php version
-        - Afficher vos infos : $ php cliver.php me
-        - Afficher vos derniers tweets : $ php cliver.php readown
-        - C\'est tout, pour le moment...
+        - Mettre à jour votre status (envoyer un tweet) : $ cliver --send="Votre message ici"
+        - Afficher la version du projet CLIver : $ cliver version
+        - Afficher vos infos : $ cliver me
+        - Afficher vos derniers tweets : $ cliver readown
+	- C\'est tout, pour le moment...
 ';
                 }
 
