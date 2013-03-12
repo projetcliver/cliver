@@ -5,4 +5,4 @@
 DIR=$( dirname $( readlink -f $0 ) );
 
 # Execute php/cliver
-php-cgi -q $DIR/cliver.php $@
+php-cgi -q $DIR/cliver.php "$@"

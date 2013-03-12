@@ -1,4 +1,6 @@
 <?php
-//	$_SESSION['coucou']='coucou';
-	var_dump($_SESSION);
+	require_once('classes/ArgvParser.php');
+
+	$ap = new ArgvParser();
+	var_dump($ap->getArgs());
 ?>

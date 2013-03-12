@@ -1,9 +1,59 @@
 #!/bin/bash
 ### CLIver (setup) ###
 
+# Clear screen
+clear
+
 # Get the root path of the program
 DIR=$( dirname $( readlink -f $0 ) );
 
+# Welcome !
+echo "Bienvenue dans l'installation de CLIver. Vous allez être guidés à travers les étapes de configuration."
+echo ""
+
+# Ask for keys
+echo "Etape 1: Saisie de vos informations de connexion."
+echo "(si vous n'avez pas vos clefs, merci de les générer à l'aide de cette page : http://cliver.jntradio.fr/config)";
+read -p "Saisissez le contenu du champ \"User token\": " userToken
+read -p "Saisissez le contenu du champ \"User secret\": " userSecret
+read -p "Saisissez le contenu du champ \"Screen name\" (sans le @ de départ): " screenName
+
+echo "<?php
+	\$config = array(
+		\"user_token\" => '$userToken',
+		\"user_secret\" => '$userSecret',
+		\"screen_name\" => '$screenName'
+);" > $DIR/conf.inc
+
+echo "Merci. Vos informations ont été enregistrées dans le fichier conf.inc."
+echo "Etape 1 terminée."
+echo ""
+
+# Create directory if not exists
+echo "Etape 2: Configuration de l'environnement."
+mkdir -p $HOME/.local/bin/
+
 # Add Link to $HOME/.local/bin, so it will be accessible by cl<tab><tab>
+rm -f $HOME/.local/bin/cliver
 ln -s $DIR/cliver $HOME/.local/bin/cliver
-echo 'Cliver est désormais accessible comme commande système'
+echo 'Cliver est désormais accessible comme commande système.'
+echo "Etape 2 terminée."
+
+# EO Installation
+echo "";
+echo "L'installation est désormais terminée !"
+
+echo ""
+echo "====================="
+
+echo "
+     __
+ ___/_ °<  $ CLIver
+/ ))/  /
+--\___/
+     |.
+     
+"
+
+# Welcome to cliver
+cliver help
